@@ -1,7 +1,7 @@
 package ru.performancetool.analysis;
 
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
@@ -25,5 +25,5 @@ public class Analysis {
     public DataProperties dataProperties(){return  new DataProperties();}
 
     @Bean
-    public JSONPObject metricSchema(){return null;}
+    public JsonNode metricSchema(){return null;}
 }

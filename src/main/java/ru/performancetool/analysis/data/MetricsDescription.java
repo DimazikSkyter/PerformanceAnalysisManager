@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.val;
 
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -56,11 +55,24 @@ public class MetricsDescription {
 
         private Class cls;
 
-        MetricsTypes(Class cls){
+        MetricsTypes(Class cls) {
             this.cls = cls;
 
         }
 
-        public Class getCls(){return cls;}
+        public static MetricsTypes getMetricsTypesFromShortCase(String shortCase) {
+            switch (shortCase) {
+                case "int":
+                    return ALL_INT;
+                case "dou":
+                    return ALL_DOUBLE;
+                default:
+                    return ANY;
+            }
+        }
+
+        public Class getCls() {
+            return cls;
+        }
     }
 }

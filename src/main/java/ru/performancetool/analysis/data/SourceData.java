@@ -1,25 +1,33 @@
 package ru.performancetool.analysis.data;
 
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 
-import javax.xml.transform.Source;
 import java.lang.reflect.Array;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 public class SourceData<T> {
 
-
-    private JSONPObject mapping;
+    private String fileName;
+    private Map mapping;
     private MetricsDescription metricsDescription;
     private T[] massive;
 
     @SuppressWarnings("unchecked")
-    public SourceData(JSONPObject mapping, MetricsDescription metricsDescription, Class<T> type, int size) {
-        this.mapping = mapping;
-        this.metricsDescription = metricsDescription;
+    public SourceData(JsonNode metricSchema, Class<T> type, int size) {
+        this.mapping = getMetricSchema(metricSchema);
+        this.metricsDescription = getMetricsDescription(metricSchema);
         this.massive = (T[]) Array.newInstance(type, size);
     }
 
+    private Map getMetricSchema(JsonNode metricSchema) {
+        return new HashMap();
+    }
+
+    private MetricsDescription getMetricsDescription(JsonNode metricSchema) {
+        return new MetricsDescription();
+    }
 }

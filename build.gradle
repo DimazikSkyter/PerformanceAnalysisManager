@@ -1,3 +1,6 @@
+buildscript {
+    apply from: 'versions.gradle'
+}
 plugins {
     id 'groovy'
     id 'java'
@@ -14,7 +17,9 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
-
+test {
+    useJUnitPlatform()
+}
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
@@ -29,11 +34,14 @@ dependencies {
 
     compile 'ch.qos.logback:logback-classic:1.2.3'
 
-    compileOnly 'org.projectlombok:lombok:1.18.12'
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
-    testCompileOnly 'org.projectlombok:lombok:1.18.12'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+    compileOnly "org.projectlombok:lombok:$gradleVersion"
+    annotationProcessor "org.projectlombok:lombok:$gradleVersion"
+
+    testCompileOnly "org.projectlombok:lombok:$gradleVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:$gradleVersion"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
 
 compileKotlin {
