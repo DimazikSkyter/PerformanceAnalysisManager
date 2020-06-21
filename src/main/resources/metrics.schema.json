@@ -1,0 +1,11 @@
+{
+  "hardware" : {
+    "metrics" : ["CPU_utilization"]
+  },
+  "system" : {
+
+  },
+  "application" : {
+
+  }
+}

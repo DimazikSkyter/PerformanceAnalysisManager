@@ -1,0 +1,7 @@
+metrics:
+  businessTransactionsPath: transactions.csv
+  BusinessTransactionsDescriptionPath: transactions_description.csv
+  jvmPath: jmv.file
+  applicationMetricsPath: applicationMetrics.file
+  hostsInfoPath: host.csv
+
