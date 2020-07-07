@@ -1,4 +1,8 @@
 package ru.performancetool.analysis.data;
 
-public class ResultData {
+import java.io.Serializable;
+
+public class ResultData implements Serializable {
+
+    private
 }
