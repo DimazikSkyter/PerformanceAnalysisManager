@@ -4,10 +4,13 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.util.SerializationUtils;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
@@ -54,6 +57,10 @@ public class Utils {
             objects.add(object);
         }
         return objects;
+    }
+
+    public static Function loadFunction(String fileName) throws IOException {
+        return (Function) SerializationUtils.deserialize(Files.readAllBytes(Paths.get(fileName)));
     }
 
     public static int countLinesNew(File file) throws IOException {

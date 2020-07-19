@@ -55,14 +55,14 @@ public class DataService {
         return MetricsDescription.MetricsTypes.getMetricsTypesFromShortCase(shortCase).getCls();
     }
 
-    public ResultData loadResult(String uuid) throws IOException {
-        ResultData resultData = null;
+    public PurifiedData loadResult(String uuid) throws IOException {
+        PurifiedData purifiedData = null;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(uuid)))) {
-            resultData = (ResultData) ois.readObject();
+            purifiedData = (PurifiedData) ois.readObject();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return resultData;
+        return purifiedData;
     }
 
     public List<SourceData> loadSources(String uuid) throws IOException {
@@ -81,7 +81,7 @@ public class DataService {
         return zipFileName;
     }
 
-    public String saveResultToLocalStorage(ResultData data) {
+    public String saveResultToLocalStorage(PurifiedData data) {
         String uuid = UUID.randomUUID().toString();
         return uuid;
     }

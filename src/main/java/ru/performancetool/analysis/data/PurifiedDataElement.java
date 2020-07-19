@@ -1,8 +1,11 @@
 package ru.performancetool.analysis.data;
 
+import lombok.Data;
+
 import java.util.Map;
 
-public class ResultDataElement <T> {
+@Data
+public class PurifiedDataElement<T> {
 
     private String name;
     private String clob;

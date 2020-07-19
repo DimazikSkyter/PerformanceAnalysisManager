@@ -1,8 +1,14 @@
 package ru.performancetool.analysis.data;
 
-import java.io.Serializable;
+import java.util.List;
 
-public class ResultData implements Serializable {
+public class ResultData {
 
-    private
+    public ResultData joinAndReturnThis(ResultData resultData) {
+        return this;
+    }
+
+    public void apply (List<DataPoint> dataPoints) {
+
+    }
 }
