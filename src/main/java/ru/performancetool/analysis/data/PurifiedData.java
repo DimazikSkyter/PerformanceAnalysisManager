@@ -1,6 +1,7 @@
 package ru.performancetool.analysis.data;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -12,6 +13,8 @@ import java.util.function.Predicate;
 public class PurifiedData implements Serializable {
 
     private Map<String, PurifiedDataElement> resultDataElementMap;
+    @NonNull
+    private long[] timeSeries;
     @Getter
     @Setter
     private boolean isSLACompleted;
