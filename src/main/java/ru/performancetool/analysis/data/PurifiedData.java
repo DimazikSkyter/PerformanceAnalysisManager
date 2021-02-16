@@ -19,7 +19,13 @@ public class PurifiedData implements Serializable {
     @Setter
     private boolean isSLACompleted;
 
-    public PurifiedData() {
+    public PurifiedData(long[] timeSeries, Map<String, PurifiedDataElement> resultDataElementMap) {
+        this.timeSeries = timeSeries;
+        this.resultDataElementMap = resultDataElementMap;
+    }
+
+    public void addPurifiedElement() {
+
     }
 
     public PurifiedDataElement filterElement(Predicate predicate) {

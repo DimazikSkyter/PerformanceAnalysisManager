@@ -1,21 +1,20 @@
 package ru.performancetool.analysis.data;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.SerializationUtils;
+import ru.performancetool.analysis.utilities.Utils;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 
 @Service
 @Slf4j
@@ -29,39 +28,49 @@ public class DataService {
         this.metricSchema = metricSchema;
     }
 
-    public Map<String, SourceData> convertToSourcesFromZipFile(ZipInputStream zipInputStream) throws IOException {
-        Map<String, SourceData> sourceDataMap = new HashMap<>();
-        ZipEntry zipEntry;
-        while (( zipEntry = zipInputStream.getNextEntry()) != null) {
-            byte[] extra = zipEntry.getExtra();
-            String name = zipEntry.getName();
-            SourceData sourceData = new SourceData(name, metricSchema, getFileMetricType(name), extra);
-            sourceDataMap.put(name, sourceData);
-        }
-        return sourceDataMap;
-    }
+//    public Map<String, SourceData> convertToSourcesFromZipFile(ZipInputStream zipInputStream) throws IOException {
+//        Map<String, SourceData> sourceDataMap = new HashMap<>();
+//        ZipEntry zipEntry;
+//        while (( zipEntry = zipInputStream.getNextEntry()) != null) {
+//            byte[] extra = zipEntry.getExtra();
+//            String name = zipEntry.getName();
+//            SourceData sourceData = new SourceData(
+//                    name,
+//                    metricSchema,
+//                    getFileMetricType(name),
+//                    getTimeseriesType(),
+//                    extra);
+//            sourceDataMap.put(name, sourceData);
+//        }
+//        return sourceDataMap;
+//    }
+//
+//    public Map<String, SourceData> convertToSourcesFromFolder(String folderPath) {
+//        @NonNull File folder = new File(folderPath);
+//        return Arrays.stream(folder.listFiles())
+//                .filter(Objects::nonNull)
+//                .map(file -> {
+//                    String name = file.getName();
+//                    try {
+//                        return new SourceData(
+//                                name,
+//                                metricSchema,
+//                                getFileMetricType(name),
+//                                getTimeseriesType(),
+//                                FileUtils.readFileToByteArray(file));
+//                    } catch (StringIndexOutOfBoundsException e) {
+//                        log.error("Error while parcing type in file name {}", name, e);
+//                    } catch (IOException e) {
+//                        log.error("Catch exception while calculate row number in file {}", name, e);
+//                    }
+//                    return null;
+//                })
+//                .filter(Objects::nonNull)
+//                .collect(Collectors.toMap(SourceData::getFileName, o -> o));
+//    }
 
-    public Map<String, SourceData> convertToSourcesFromFolder(String folderPath) {
-        @NonNull File folder = new File(folderPath);
-        return Arrays.stream(folder.listFiles())
-                .filter(Objects::nonNull)
-                .map(file -> {
-                    String name = file.getName();
-                    try {
-                        return new SourceData(
-                                name,
-                                metricSchema,
-                                getFileMetricType(name),
-                                FileUtils.readFileToByteArray(file));
-                    } catch (StringIndexOutOfBoundsException e) {
-                        log.error("Error while parcing type in file name {}", name, e);
-                    } catch (IOException e) {
-                        log.error("Catch exception while calculate row number in file {}", name, e);
-                    }
-                    return null;
-                })
-                .filter(Objects::nonNull)
-                .collect(Collectors.toMap(SourceData::getFileName, o -> o));
+    private Class getTimeseriesType(){
+        return long.class;
     }
 
     private Class getSourceDataType(File file) {

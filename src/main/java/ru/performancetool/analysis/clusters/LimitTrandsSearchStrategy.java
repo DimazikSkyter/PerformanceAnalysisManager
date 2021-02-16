@@ -2,7 +2,10 @@ package ru.performancetool.analysis.clusters;
 
 
 import javafx.util.Pair;
+import ru.performancetool.analysis.data.DataPoint;
 import ru.performancetool.analysis.data.PurifiedData;
+import ru.performancetool.analysis.data.ResultData;
+import ru.performancetool.analysis.store.ClusterStorage;
 
 import java.time.Instant;
 import java.util.List;
@@ -23,4 +26,12 @@ public class LimitTrandsSearchStrategy extends Strategy {
     private Pair<Instant, Instant> startAndFinishPeriod;
     private Map<Integer, String> layers;
 
+    public LimitTrandsSearchStrategy(ClusterStorage clusterStorage) {
+        super(clusterStorage);
+    }
+
+    @Override
+    public ResultData run(List<DataPoint> points, PurifiedData purifiedData) {
+        return null;
+    }
 }

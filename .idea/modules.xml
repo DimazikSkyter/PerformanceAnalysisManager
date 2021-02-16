@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Analysis.iml" filepath="$PROJECT_DIR$/.idea/Analysis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ControlApiService/Analysis.ControlApiService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ControlApiService/Analysis.ControlApiService.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ControlApi.iml" filepath="$PROJECT_DIR$/.idea/modules/ControlApi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ControlApiService.iml" filepath="$PROJECT_DIR$/.idea/modules/ControlApiService.iml" />
+    </modules>
+  </component>
+</project>

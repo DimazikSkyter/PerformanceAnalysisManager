@@ -3,7 +3,7 @@ package ru.performancetool.analysis.clusters;
 import lombok.Getter;
 import ru.performancetool.analysis.data.PurifiedData;
 import ru.performancetool.analysis.data.PurifiedDataElement;
-import ru.performancetool.analysis.data.Utils;
+import ru.performancetool.analysis.utilities.Utils;
 
 import java.io.IOException;
 import java.util.HashMap;

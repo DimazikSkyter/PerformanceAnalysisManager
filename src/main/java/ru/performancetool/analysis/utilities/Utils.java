@@ -1,4 +1,4 @@
-package ru.performancetool.analysis.data;
+package ru.performancetool.analysis.utilities;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.util.SerializationUtils;

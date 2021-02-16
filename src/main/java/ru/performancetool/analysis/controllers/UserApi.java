@@ -44,10 +44,9 @@ public class UserApi {
         String uuid = UUID.randomUUID().toString();
         dataServiceJob.submit(() -> {
             try {
-                Map<String, SourceData> sourceDataMap = dataService.convertToSourcesFromZipFile(zis);
+                Map<String, SourceData> sourceDataMap = null; //dataService.convertToSourcesFromZipFile(zis);
                 if(enableSourceStorage)
                     dataService.saveSourceToLocalStorage(sourceDataMap, uuid);
-                dataService.
             } catch (IOException e) {
                 e.printStackTrace();
             }

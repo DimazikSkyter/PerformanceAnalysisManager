@@ -1,6 +1,7 @@
 package ru.performancetool.analysis.data;
 
 import org.junit.jupiter.api.Test;
+import ru.performancetool.analysis.utilities.Utils;
 
 import java.io.IOException;
 import java.nio.file.Files;

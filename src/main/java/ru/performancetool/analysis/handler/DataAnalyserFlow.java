@@ -38,9 +38,9 @@ public class DataAnalyserFlow {
                 .map(strategyPredicateEntry -> strategyPredicateEntry.getKey().run(dataPoints, purifiedData))
                 .filter(Objects::nonNull)
                 .reduce(ResultData::joinAndReturnThis)
-                .orElseThrow(() -> {
-                    throw new RuntimeException("Exception on handle result");
-                });
+                .orElseThrow(() ->
+                    new RuntimeException("Exception on handle result")
+                );
         resultData.apply(dataPoints);
         return resultData;
     }
