@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
-import ru.performance.analysis.propeties.TimeoutProperties
+import ru.performance.analysis.service.ConfigurationService
 
 @Controller
 class ConfigurationController(
-    private val timeoutProperties: TimeoutProperties
+    private val configurationService: ConfigurationService
 ) {
 
     private val log = LoggerFactory.getLogger(this.javaClass)
@@ -22,7 +22,7 @@ class ConfigurationController(
         model: Model
     ): String {
         log.info("Starting method configurations with parameters {}.")
-        model.addAttribute("list", mapOf("timeout1" to timeoutProperties.timeout1, "timeout2" to timeoutProperties.timeout2))
+        model.addAttribute("list", mapOf("timeout1" to "timeoutProperties.timeout1", "timeout2" to "timeoutProperties.timeout2"))
         return "configuration"
     }
 
@@ -32,7 +32,7 @@ class ConfigurationController(
         model: Model
     ): String {
         log.info("Starting method configurations with parameters {}.", type)
-        model.addAttribute("list", mapOf("timeout1" to timeoutProperties.timeout1, "timeout2" to timeoutProperties.timeout2))
+        model.addAttribute("list", mapOf("timeout1" to "timeoutProperties.timeout1", "timeout2" to "timeoutProperties.timeout2"))
         return "configuration"
     }
 
