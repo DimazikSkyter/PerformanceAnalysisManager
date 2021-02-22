@@ -1,3 +1,9 @@
 timeout:
   timeout1: 1
   timeout2: 3
+server:
+  port: 8080
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
